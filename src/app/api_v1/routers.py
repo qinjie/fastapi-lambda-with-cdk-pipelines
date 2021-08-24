@@ -1,7 +1,6 @@
 from fastapi import APIRouter
-
-from app.api_v1 import user_auth
+from app import config
+from app.api_v1 import nanoid_api
 
 routers = APIRouter()
-routers.include_router(
-    user_auth.router, prefix="/auth", tags=["Auth"])
+routers.include_router(nanoid_api.router, prefix="/nanoid")
