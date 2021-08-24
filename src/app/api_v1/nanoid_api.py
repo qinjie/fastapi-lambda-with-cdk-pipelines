@@ -1,20 +1,12 @@
-import base64
-import json
-from datetime import datetime
 from typing import Optional
 
-from bson import json_util
-from fastapi import APIRouter, Security, HTTPException, Response, Request
-from fastapi.responses import ORJSONResponse
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi import APIRouter
 from pydantic import BaseModel
-from starlette.responses import RedirectResponse
 import nanoid
 
 from app import config
 
 router = APIRouter()
-security = HTTPBearer()
 
 
 class NanoIdInputType(BaseModel):
@@ -49,5 +41,6 @@ async def shorten_url(payload: NanoIdInputType, count: int):
     """
     Generate x number of nano-id with specified alphabets and length
     """
-    result = [nanoid.generate(payload.alphabets, payload.length) for i in range(count)]
+    result = [nanoid.generate(payload.alphabets, payload.length)
+              for i in range(count)]
     return {'result': result, 'alphabets': payload.alphabets, 'length': payload.length}
