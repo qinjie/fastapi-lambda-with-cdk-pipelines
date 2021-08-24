@@ -58,5 +58,14 @@ export class PipelineStack extends cdk.Stack {
     const stageDev = pipeline.addStage("backend");
     const lambdaStage = new LambdaStage(this, "LambdaStage");
     stageDev.addApplication(lambdaStage);
+
+    /* CloudFormation Output */
+    new cdk.CfnOutput(this, `LambdaFunctionName`, {
+      value: lambdaStage.outputLambda.value,
+    });
+
+    new cdk.CfnOutput(this, `ApiGatewayUrl`, {
+      value: lambdaStage.outputApiGateway.value,
+    });
   }
 }
