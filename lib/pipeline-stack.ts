@@ -56,7 +56,7 @@ export class PipelineStack extends cdk.Stack {
 
     // Add one or more application stage
     const stageDev = pipeline.addStage("backend");
-    const lambdaStage = new LambdaStage(this, "LambdaStage");
+    const lambdaStage = new LambdaStage(this, `${id}-LambdaStage`);
     stageDev.addApplication(lambdaStage);
   }
 }
