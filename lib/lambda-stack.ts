@@ -15,7 +15,8 @@ export class LambdaAlphaStack extends cdk.Stack {
 
   // Update Lambda Function Definition here
   /* TO BE UPDATED - START */
-  lambda_src_folder = "../src";
+  // lambda_src_folder = "../src";
+  lambda_src_folder = process.env.SRC_PATH!;
   name: string;
 
   private getLambdaFunction(
@@ -67,7 +68,7 @@ export class LambdaAlphaStack extends cdk.Stack {
         allowMethods: [CorsHttpMethod.ANY],
         allowHeaders: ["*"],
       },
-      apiName: "user-auth-api",
+      apiName: `${id}Api`,
       defaultIntegration: new LambdaProxyIntegration({
         handler: this.lambdaFunction,
       }),
