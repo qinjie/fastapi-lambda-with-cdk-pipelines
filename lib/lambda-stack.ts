@@ -8,7 +8,7 @@ import { IFunction } from "@aws-cdk/aws-lambda";
 import { CorsHttpMethod, HttpApi, HttpMethod } from "@aws-cdk/aws-apigatewayv2";
 import { LambdaProxyIntegration } from "@aws-cdk/aws-apigatewayv2-integrations";
 
-export class LambdaAlphaStack extends cdk.Stack {
+export class LambdaStack extends cdk.Stack {
   outputLambda: cdk.CfnOutput;
   outputApiGateway: cdk.CfnOutput;
   lambdaFunction: IFunction;

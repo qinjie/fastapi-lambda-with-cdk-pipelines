@@ -1,7 +1,6 @@
 import * as cdk from "@aws-cdk/core";
 import { CfnOutput } from "@aws-cdk/core";
-import { LambdaAlphaStack } from "./lambda-stack";
-import { IFunction } from "@aws-cdk/aws-lambda";
+import { LambdaStack } from "./lambda-stack";
 
 export class LambdaStage extends cdk.Stage {
   outputLambda: CfnOutput;
@@ -10,9 +9,9 @@ export class LambdaStage extends cdk.Stage {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StageProps) {
     super(scope, id, props);
 
-    const stackAlpha = new LambdaAlphaStack(this, "LambdaAlpha", {
+    const stackAlpha = new LambdaStack(this, `${id}LambdaStack`, {
       tags: {
-        Application: "LambdaAlpha",
+        Application: `${id}`,
         Environment: id,
       },
     });
